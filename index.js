@@ -77,5 +77,6 @@ const router = {
   books: bookHandler.Books,
   users: userHandler.User,
   lendbook: userHandler.lendBook,
+  returnbook: userHandler.returnBook,
   notfound: bookHandler.notfound,
 };
