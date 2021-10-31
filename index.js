@@ -5,8 +5,9 @@
 const http = require("http");
 const url = require("url");
 const { StringDecoder } = require("string_decoder");
-const bookHandler = require("./lib/bookHandler");
-const userHandler = require("./lib/userHandler");
+const { books } = require("./lib/bookHandler");
+const users = require("./lib/userHandler");
+const { notfound, ping, lendbook, returnbook } = require("./lib/otherHandler");
 
 const httpServer = http.createServer((req, res) => {
   //parse the incoming url
@@ -59,10 +60,6 @@ const httpServer = http.createServer((req, res) => {
 
       res.write(responseObj);
       res.end();
-
-      console.log(
-        `the url visited was, ${trimedPath} and the method is ${method}`
-      );
     });
   });
 });
@@ -73,10 +70,10 @@ httpServer.listen(8080, () => {
 });
 
 const router = {
-  ping: bookHandler.ping,
-  books: bookHandler.Books,
-  users: userHandler.User,
-  lendbook: userHandler.lendBook,
-  returnbook: userHandler.returnBook,
-  notfound: bookHandler.notfound,
+  ping,
+  books,
+  users,
+  lendbook,
+  returnbook,
+  notfound,
 };
